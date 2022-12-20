@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
- 
-    
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Vokabeltrainer</title>                
+        <script src="script.js"></script>
+    </head>
+        <script>
+          var vokabeln;
+          var vokabelNr;
+          var de=0;
+          var en=1;
+          function vokabelTrainer(){
+          	vokabeln=[
+              ['Kündigungsfrist', 'period of notice',0],
+              ['Billiard', 'Billiards',0],
+              ['Joggen', 'Jogging',0],
+              ['Einfahrt', 'gateway',0],
+              ['Eingabetaste', 'enter key',0],
+              ['Laufwerk', 'device',0],
+              ['Einkauf' ,'shopping',0],
+              ['Einlass', 'admission',0],
+              ['Eisenbahn' ,'railway',0],
+              ['Grill', 'barbecue',0],
+              ['Großmutter' ,'grandma',0],
+              ['Großpapa' ,'grandpa',0],
+              ['Gruppenarbeit' ,'group work',0],
+              ['Haare','hair',0],
+              ['Hampelmann', 'jumping jack',0]];
+              var anzVokabeln=vokabeln.length;
+              var ausgabe=document.getElementById("deutsch");  
+              var eingabe=document.getElementById("englisch").value;
+              vokabelNr=Math.floor(Math.random()*(anzVokabeln));
+              ausgabe.innerHTML=vokabeln[vokabelNr][de];
+          }
+          function pruefen(){
+            var ergebnis=document.getElementById("richtig_falsch");
+            eingabe=document.getElementById("englisch").value;
+            
+            if(eingabe==vokabeln[vokabelNr][en]){
+              ergebnis.innerHTML="richtig";
+            	}
+            else{ergebnis.innerHTML="falsch, ( " + vokabeln[vokabelNr][en] +" )";
+                }
+          }   
+  		</script>                
+    <body>
+      <h1>Avartos sein VokabelAbfrageDing</h1>
+      <button onClick="vokabelTrainer();">Beginne</button>
+      <h3>Übersetze auf Englisch:</h3><h2 id="deutsch"></h2>
+      <input type="text" id="englisch" style="font-size:14pt;">
+      <button onClick="pruefen();">OK?</button>
+	  <h3 id="richtig_falsch">richtig oder falsch</h3>
+    </body>
 </html>
